@@ -21,7 +21,9 @@ tell application "Finder"
 				make new folder at theGrandParentFolder with properties {name:theWord}
 			end if
 			
-			duplicate theFile as alias to theNewFolder as alias
+			-- copy file to new location, replace if found
+			-- (if non replacing, 'without' need to try catch to handle error)
+			duplicate theFile as alias to theNewFolder as alias with replacing
 			
 		end repeat
 	end repeat
