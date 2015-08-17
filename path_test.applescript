@@ -13,7 +13,7 @@ try
 		log theFile
 		set theFilePath to theFile as text
 		log theFilePath
-		set theFilePathElements to words of theFilePath
+		set theFilePathElements to every text item of theFilePath
 		log theFilePathElements
 	end tell
 	set AppleScript's text item delimiters to oldDelims -- restore them
