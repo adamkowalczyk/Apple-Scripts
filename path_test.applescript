@@ -26,6 +26,12 @@ try
 		log theFilePathElements
 		set theCCIndex to my list_position(theCountryCode, theFilePathElements)
 		log theCCIndex as text
+		set theFilePathElementsLength to length of theFilePathElements
+		log theFilePathElementsLength
+		set theSubPath to items (theCCIndex + 1) thru (theFilePathElementsLength - 1) of theFilePathElements
+		log theSubPath
+		set theBasePath to items 1 thru (theCCIndex - 1) of theFilePathElements
+		log theBasePath
 		
 	end tell
 	set AppleScript's text item delimiters to oldDelims -- restore them
