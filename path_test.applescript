@@ -32,6 +32,12 @@ try
 		log theSubPath
 		set theBasePath to items 1 thru (theCCIndex - 1) of theFilePathElements
 		log theBasePath
+		set theNewPath to theBasePath & "de" & theSubPath
+		log theNewPath
+		set theNewPathAlias to theNewPath as text
+		log theNewPathAlias
+		-- doesn't work..  make a folder?
+		duplicate theFile as alias to theNewPathAlias as alias
 		
 	end tell
 	set AppleScript's text item delimiters to oldDelims -- restore them
