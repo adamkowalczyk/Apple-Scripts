@@ -34,10 +34,17 @@ try
 		log theBasePath
 		set theNewPath to theBasePath & "de" & theSubPath
 		log theNewPath
-		set theNewPathAlias to theNewPath as text
-		log theNewPathAlias
+		set theNewPathLength to length of theNewPath
+		set theNewParentPath to items 1 thru (theNewPathLength - 1) of theNewPath as text
+		set theNewFolderName to item (theNewPathLength) of theNewPath as text
+		log theNewParentPath
+		log theNewFolderName
+		--need to check if exists first?
+		make new folder at theNewParentPath with properties {name:theNewFolderName}
+		--set theNewPathAlias to theNewPath as text
+		--log theNewPathAlias
 		-- doesn't work..  make a folder?
-		duplicate theFile as alias to theNewPathAlias as alias
+		--duplicate theFile as alias to theNewPathAlias as alias
 		
 	end tell
 	set AppleScript's text item delimiters to oldDelims -- restore them
