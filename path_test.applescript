@@ -34,17 +34,28 @@ try
 		log theBasePath
 		set theNewPath to theBasePath & "de" & theSubPath
 		log theNewPath
+		set AppleScript's text item delimiters to {"/"} -- declare new delimiters
+		set theNewPathLength to length of theNewPath
+		set theNewPosixPath to items 2 thru (theNewPathLength) of theNewPath as text
+		set theNewPosixPath to "/" & theNewPosixPath
+		log theNewPosixPath
+		-- use quoted form to escape spaces
+		set mkdirStr to "mkdir -p " & quoted form of theNewPosixPath
+		do shell script mkdirStr
+		(*
 		set theNewPathLength to length of theNewPath
 		set theNewParentPath to items 1 thru (theNewPathLength - 1) of theNewPath as text
 		set theNewFolderName to item (theNewPathLength) of theNewPath as text
 		log theNewParentPath
 		log theNewFolderName
 		--need to check if exists first?
-		make new folder at theNewParentPath with properties {name:theNewFolderName}
+		-- fails because tree missing?
+		make new folder at alias theNewParentPath with properties {name:theNewFolderName}
 		--set theNewPathAlias to theNewPath as text
 		--log theNewPathAlias
 		-- doesn't work..  make a folder?
 		--duplicate theFile as alias to theNewPathAlias as alias
+		*)
 		
 	end tell
 	set AppleScript's text item delimiters to oldDelims -- restore them
@@ -52,4 +63,3 @@ try
 on error
 	set AppleScript's text item delimiters to oldDelims -- restore them in case something went wrong
 end try
-
